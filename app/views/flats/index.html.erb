@@ -1,0 +1,36 @@
+<div class="flat-container">
+<h1>All our flats</h1>
+<p>All <%=@number_flat%></p>
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-sm-12 col-md-4">
+        <div class="card" style="width: 18rem;">
+          <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?cs=srgb&dl=pexels-vecislavas-popa-1571460.jpg&fm=jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%=flat.name%></h5>
+            <p class="card-text"><%=flat.address%></p>
+          </div>
+          <div class="price-info d-flex p-3 mb-0">
+            <div class="user_info d-flex align-items-baseline" >
+              <i class="fas fa-euro-sign"></i>
+              <p><%=flat.price_per_night%>  </p>
+            </div>
+            <br>
+            <div class="user_info d-flex align-items-baseline ml-2">
+              <i class="fas fa-user-friends"></i>
+              <p><%=flat.number_of_guests%></p>
+            </div>
+          </div>
+          <hr class="my-0">
+          <div class="redirect d-flex justify-content-between p-3">
+            <%= link_to "More info",  flat_path(flat)%>
+            <%= link_to "Edit",  edit_flat_path(flat), class: "edit"%>
+            <%= link_to "Remove",  flat_path(flat), method: :delete, data: { confirm: "Delete #{flat.name} ?" }, class: "remove"%>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
